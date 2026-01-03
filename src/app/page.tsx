@@ -1,5 +1,9 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
+import { useTheme } from "@/context/ThemeContext";
+
 // Product type definition
 type Product = {
   id: number;
@@ -50,8 +54,6 @@ const featuredProducts: Product[] = [
   }
 ];
 
-import { useTheme } from "@/context/ThemeContext";
-
 function ProductCard({ product }: { product: Product }) {
   const { theme } = useTheme();
   const isNight = theme === 'night';
@@ -61,18 +63,20 @@ function ProductCard({ product }: { product: Product }) {
       <div className="relative group h-64">
         <div className="relative w-full h-full overflow-hidden">
           {/* Night Image (Base Layer - Visible in Night Mode) */}
-          <img
+          <Image
             src={product.image}
             alt={product.name}
-            className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-105 ${
+            fill
+            className={`object-cover transition-all duration-700 ease-in-out group-hover:scale-105 ${
                isNight ? 'opacity-100 z-10' : 'opacity-0 z-0'
             }`}
           />
           {/* Day Image (Overlay Layer - Visible in Day Mode) */}
-          <img
+          <Image
             src={product.altImage}
             alt={product.name}
-            className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-105 ${
+            fill
+            className={`object-cover transition-all duration-700 ease-in-out group-hover:scale-105 ${
               !isNight ? 'opacity-100 z-10' : 'opacity-0 z-0'
             }`}
           />
@@ -152,12 +156,12 @@ export default function HomePage() {
           </div>
           
           <div className="text-center mt-12">
-            <a
+            <Link
               href="/products"
               className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
             >
               View All Products
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -176,9 +180,11 @@ export default function HomePage() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="relative group cursor-pointer">
-              <img
+              <Image
                 src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fc242dda-0445-4ed0-8eb3-375836803284.png"
                 alt="Electronics category featuring modern devices and technology"
+                width={800}
+                height={600}
                 className="w-full h-64 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/40 rounded-xl flex items-center justify-center">
@@ -187,9 +193,11 @@ export default function HomePage() {
             </div>
             
             <div className="relative group cursor-pointer">
-              <img
+              <Image
                 src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f4f84bcb-4564-414a-870d-49f3aab3fe61.png"
                 alt="Fashion category featuring stylish clothing and accessories"
+                width={800}
+                height={600}
                 className="w-full h-64 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/40 rounded-xl flex items-center justify-center">
@@ -198,9 +206,11 @@ export default function HomePage() {
             </div>
             
             <div className="relative group cursor-pointer">
-              <img
+              <Image
                 src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/81346a07-fe6a-42c3-b4ac-2f71ad297271.png"
                 alt="Home and Garden category featuring furniture and decor"
+                width={800}
+                height={600}
                 className="w-full h-64 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/40 rounded-xl flex items-center justify-center">

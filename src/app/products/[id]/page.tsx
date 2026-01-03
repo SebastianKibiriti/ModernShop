@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { getProductById } from "@/data/products";
 import { Product } from "@/types/product";
 import { useTheme } from "@/context/ThemeContext";
@@ -24,7 +25,7 @@ export default function ProductDetailPage() {
     // If night mode, index 0 (Night). If day mode, index 1 (Day).
     // Assuming product.images[0] is Night and product.images[1] is Day.
     setCurrentImageIndex(isNight ? 0 : 1);
-  }, [theme]);
+  }, [theme, isNight]);
 
   useEffect(() => {
     const productId = parseInt(params.id as string);
@@ -58,7 +59,7 @@ export default function ProductDetailPage() {
       <div className={`min-h-screen flex items-center justify-center ${isNight ? 'bg-[#020617]' : 'bg-gray-50'}`}>
         <div className="text-center">
           <h1 className={`text-2xl font-bold mb-4 ${isNight ? 'text-gray-100' : 'text-gray-900'}`}>Product Not Found</h1>
-          <p className={`${isNight ? 'text-gray-400' : 'text-gray-600'} mb-8`}>The product you're looking for doesn't exist.</p>
+          <p className={`${isNight ? 'text-gray-400' : 'text-gray-600'} mb-8`}>The product you&apos;re looking for doesn&apos;t exist.</p>
           <Link
             href="/products"
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
@@ -115,11 +116,12 @@ export default function ProductDetailPage() {
             {/* Main Image with Cross-fade */}
             <div className="relative h-96 lg:h-[500px] overflow-hidden rounded-xl">
               {product.images.map((image, index) => (
-                <img
+                <Image
                   key={index}
                   src={image}
                   alt={`${product.name} view ${index + 1}`}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+                  fill
+                  className={`object-cover transition-opacity duration-700 ease-in-out ${
                     index === 0 
                       ? 'z-0 opacity-100' // Base layer always visible
                       : `z-10 ${currentImageIndex === index ? 'opacity-100' : 'opacity-0'}` // Overlays fade in/out
@@ -152,9 +154,11 @@ export default function ProductDetailPage() {
                       : `border-transparent ${isNight ? 'opacity-60 hover:opacity-100' : 'opacity-100 hover:opacity-75'}`
                   }`}
                 >
-                  <img
+                  <Image
                     src={image}
                     alt={`${product.name} view ${index + 1}`}
+                    width={100}
+                    height={80}
                     className="w-full h-20 object-cover"
                   />
                 </button>

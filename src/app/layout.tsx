@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import Header from "@/components/Header";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,32 +38,31 @@ export default function RootLayout({
                   </div>
                   
                   <div>
-                    <h4 className="font-semibold mb-4">Quick Links</h4>
-                    <ul className="space-y-2 text-gray-400">
-                      <li><a href="/" className="hover:text-white transition-colors">Home</a></li>
-                      <li><a href="/products" className="hover:text-white transition-colors">Products</a></li>
-                      <li><a href="#" className="hover:text-white transition-colors">Categories</a></li>
-                      <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-                    </ul>
-                  </div>
+                                    <h4 className="font-semibold mb-4">Quick Links</h4>
+                                    <ul className="space-y-2 text-gray-400">
+                                      <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+                                      <li><Link href="/products" className="hover:text-white transition-colors">Products</Link></li>
+                                      <li><Link href="#" className="hover:text-white transition-colors">Categories</Link></li>
+                                      <li><Link href="#" className="hover:text-white transition-colors">About</Link></li>
+                                    </ul>                  </div>
                   
                   <div>
                     <h4 className="font-semibold mb-4">Customer Service</h4>
                     <ul className="space-y-2 text-gray-400">
-                      <li><a href="#" className="hover:text-white transition-colors">Contact Us</a></li>
-                      <li><a href="#" className="hover:text-white transition-colors">Shipping Info</a></li>
-                      <li><a href="#" className="hover:text-white transition-colors">Returns</a></li>
-                      <li><a href="#" className="hover:text-white transition-colors">FAQ</a></li>
+                      <li><Link href="#" className="hover:text-white transition-colors">Contact Us</Link></li>
+                      <li><Link href="#" className="hover:text-white transition-colors">Shipping Info</Link></li>
+                      <li><Link href="#" className="hover:text-white transition-colors">Returns</Link></li>
+                      <li><Link href="#" className="hover:text-white transition-colors">FAQ</Link></li>
                     </ul>
                   </div>
                   
                   <div>
                     <h4 className="font-semibold mb-4">Connect</h4>
                     <ul className="space-y-2 text-gray-400">
-                      <li><a href="#" className="hover:text-white transition-colors">Newsletter</a></li>
-                      <li><a href="#" className="hover:text-white transition-colors">Social Media</a></li>
-                      <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-                      <li><a href="#" className="hover:text-white transition-colors">Reviews</a></li>
+                      <li><Link href="#" className="hover:text-white transition-colors">Newsletter</Link></li>
+                      <li><Link href="#" className="hover:text-white transition-colors">Social Media</Link></li>
+                      <li><Link href="#" className="hover:text-white transition-colors">Blog</Link></li>
+                      <li><Link href="#" className="hover:text-white transition-colors">Reviews</Link></li>
                     </ul>
                   </div>
                 </div>

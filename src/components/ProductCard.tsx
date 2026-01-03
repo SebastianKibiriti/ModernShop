@@ -1,15 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Product } from "@/types/product";
 import { useTheme } from "@/context/ThemeContext";
 
 interface ProductCardProps {
   product: Product;
-  showQuickView?: boolean;
 }
 
-export default function ProductCard({ product, showQuickView = true }: ProductCardProps) {
+export default function ProductCard({ product }: ProductCardProps) {
   const { theme } = useTheme();
   const isNight = theme === 'night';
 
@@ -21,18 +21,20 @@ export default function ProductCard({ product, showQuickView = true }: ProductCa
         <Link href={`/products/${product.id}`}>
           <div className="relative w-full h-full overflow-hidden cursor-pointer">
             {/* Night Image (Base Layer - Visible in Night Mode) */}
-            <img
+            <Image
               src={product.image}
               alt={product.name}
-              className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-105 ${
+              fill
+              className={`object-cover transition-all duration-700 ease-in-out group-hover:scale-105 ${
                  isNight ? 'opacity-100 z-10' : 'opacity-0 z-0'
               }`}
             />
             {/* Day Image (Overlay Layer - Visible in Day Mode) */}
-            <img
+            <Image
               src={product.altImage}
               alt={product.name}
-              className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-105 ${
+              fill
+              className={`object-cover transition-all duration-700 ease-in-out group-hover:scale-105 ${
                 !isNight ? 'opacity-100 z-10' : 'opacity-0 z-0'
               }`}
             />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import ProductGrid from "@/components/ProductGrid";
 import { products } from "@/data/products";
 
@@ -34,7 +35,7 @@ export default function ProductsPage() {
               Our Products
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Discover our complete collection of premium products. Use the search and filters to find exactly what you're looking for.
+              Discover our complete collection of premium products. Use the search and filters to find exactly what you&apos;re looking for.
             </p>
           </div>
 
@@ -79,9 +80,11 @@ export default function ProductsPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <button className="relative group cursor-pointer w-full" onClick={() => handleSearch("Electronics")}>
-              <img
+              <Image
                 src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b2a2ed2e-031e-487d-864d-4389a737b023.png"
                 alt="Electronics category featuring modern devices and technology"
+                width={800}
+                height={600}
                 className="w-full h-64 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/40 rounded-xl flex items-center justify-center">
@@ -93,9 +96,11 @@ export default function ProductsPage() {
             </button>
             
             <button className="relative group cursor-pointer w-full" onClick={() => handleSearch("Fashion")}>
-              <img
+              <Image
                 src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7fb54610-fe8d-4fc0-8d5c-bde732054fdc.png"
                 alt="Fashion category featuring stylish clothing and accessories"
+                width={800}
+                height={600}
                 className="w-full h-64 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/40 rounded-xl flex items-center justify-center">
@@ -107,9 +112,11 @@ export default function ProductsPage() {
             </button>
             
             <button className="relative group cursor-pointer w-full" onClick={() => handleSearch("Home")}>
-              <img
+              <Image
                 src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6eba3aa4-c552-45dc-9a5b-d690b0496a04.png"
                 alt="Home and Garden category featuring furniture and decor"
+                width={800}
+                height={600}
                 className="w-full h-64 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/40 rounded-xl flex items-center justify-center">
